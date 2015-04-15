@@ -17,19 +17,30 @@ package festival;
 public class Service {
 
 	
+	public static void main(String [] args) {
+		
+		Venue source = new Venue("v1");
+		Venue destination = new Venue("v2");
+		int session = 2;
+
+		Service service = new Service(source, destination, session);
+		//System.out.println(timetable);
+		//if (timetable.isEmpty()) {
+		 //   System.out.println("Empty");
+		//}
+		
+		System.out.println(service);
+		
+	}
 	
 	// REMOVE THIS LINE AND INSERT YOUR INSTANCE VARIABLES AND IMPLEMENTATION
-	// INVARIANT HERE
 	/*
 	 * invariant:
-	 * 
-	 * source != null
-	 * destination != null
-	 * session > 0
-	 * && source and destination are not equal
-	 * 
-	 * 
-	 */
+	 * 		&& source != null
+	 * 		&& destination != null
+	 * 		&& session > 0
+	 * 		&& source <> destination
+	*/
 	
 	//private ArrayList<String> venue;
 	private Venue source;
@@ -57,6 +68,7 @@ public class Service {
 		this.source = source;
 		this.destination = destination;
 		this.session = session;
+		
 		
 		if (session <= 0){
 			throw new InvalidSessionException("The session less than or equal to 0, therefore invalid");
@@ -125,7 +137,7 @@ public class Service {
 	@Override
 	public int hashCode() {
 		
-		return source.hashCode() + destination.hashCode();// + session.hashCode();
+		return source.hashCode() + destination.hashCode() + session;
 		
 		//return super.hashCode(); // REMOVE THIS LINE AND WRITE THIS METHOD
 	}
@@ -142,7 +154,8 @@ public class Service {
 	@Override
 	public String toString() {
 		String sessionString;
-		sessionString = "Departs " + getSource() + " after session " + getSession() + " for " + getDestination();
+		sessionString = "Departs " + getSource() + 
+				" after session " + getSession() + " for " + getDestination();
 		return sessionString; // REMOVE THIS LINE AND WRITE THIS METHOD
 	}
 
@@ -153,8 +166,10 @@ public class Service {
 	 * @return true if this Service is internally consistent, and false
 	 *         otherwise.
 	 */
+		
 	public boolean checkInvariant() {
-		if (source == null || destination == null || session > 0 || source == destination) {
+		if (source == null || destination == null 
+				|| session < 0 || source == destination) {
 			return false;
 		}
 				

@@ -23,7 +23,12 @@ public class Event implements Comparable<Event> {
 			
 	}
 	// REMOVE THIS LINE AND INSERT YOUR INSTANCE VARIABLES AND IMPLEMENTATION
-	// INVARIANT HERE
+	/*
+	 * invariant:
+	 * 		&& venue != null
+	 * 		&& act != null
+	 * 		&& session > 0
+	*/
 	private Venue venue;
 	private int session;
 	private String act;
@@ -145,8 +150,11 @@ public class Event implements Comparable<Event> {
 	 * its class invariant).
 	 * 
 	 * @return true if this Event is internally consistent, and false otherwise.
-	 */
+	*/
 	public boolean checkInvariant() {
-		return true; // REMOVE THIS LINE AND WRITE THIS METHOD
+		if (venue == null || act == null || session < 0) {
+			return false;
+		}
+		return true;
 	}
 }
