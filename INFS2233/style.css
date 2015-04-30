@@ -7,7 +7,27 @@ body, html {
 a {
 	text-decoration: none;
 	color: #23B3B4;
-	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	margin: 1% 0;
+}
+
+h2 {
+	margin-bottom: 0px;
+}
+
+
+
+.emphasis {
+	font-size: 12px;
+	color: #23B3B4;
+	font-style: italic;
+	text-align: center;
 }
 
 .wrapper {
@@ -17,7 +37,8 @@ a {
 
 header {
 	background-color: #23B3B4;
-	height: 75px;
+	width: 100%;
+	float: left;
 }
 
 header img {
@@ -27,7 +48,7 @@ header img {
 
 nav ul {
 	float: right;
-	margin: 25px;
+	margin: 10px 25px;
 }
 
 nav ul li {
@@ -37,23 +58,44 @@ nav ul li {
 
 nav ul li a {
 	color: #fff;
-}
-
-nav ul li a:hover {
 	font-weight: bold;
 }
 
+nav ul li a:hover {
+	text-decoration: underline;
+}
+
 .content {
-	height: auto;
+	margin: 0px 25px 45px;
+	float: left;
+}
+
+.content .banner {
+	width: 90%;
+	margin: 1% 5% 1%;
+}
+
+.content .frontProducts ul {
+	padding: 0;
+}
+
+.content .frontProducts ul li {
+	display: inline-block;
+	width: 22%;
+	padding: 0 1%;
+}
+
+.content .frontProducts ul li p {
+	
 }
 
 footer {
 	position: fixed;
-	height: 50px;
+	height: auto;
 	bottom: 0;
 	background-color: #E8E9E3;
-	width: 80%;
-	margin: auto;
+	width: 100%;
+	margin: 0;
 }
 
 footer div {
@@ -70,3 +112,30 @@ footer p, footer a {
 	margin: 8px 2px 0px;
 }
 
+table {
+	width: 100%;
+}
+
+table th {
+	text-align: left;
+}
+
+table td:first-child {
+	width: 55%;
+}
+
+table td ul {
+	list-style: none;
+}
+
+table td ul li {
+	padding: 1%;
+}
+
+.orderTable td {
+	width: 24% !important;
+}
+
+.orderTable th {
+	width: 24%;
+}
