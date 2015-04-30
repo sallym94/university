@@ -15,10 +15,18 @@ a:hover {
 
 h1 {
 	margin: 1% 0;
+	font-size:24px;
 }
 
 h2 {
 	margin-bottom: 0px;
+	font-size:20px;
+}
+
+h3 {
+	color: #fff;
+	margin: 1%;
+
 }
 
 
@@ -53,16 +61,23 @@ nav ul {
 
 nav ul li {
 	display: inline-block;
-	padding: 5px;
+	margin: 5px 0;
+	padding: 0 5px;
+	border-right: 1px solid #fff;
+}
+
+nav ul li:last-child {
+	border: none;
 }
 
 nav ul li a {
 	color: #fff;
-	font-weight: bold;
+	
 }
 
 nav ul li a:hover {
-	text-decoration: underline;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 .content {
@@ -114,6 +129,7 @@ footer p, footer a {
 
 table {
 	width: 100%;
+	border-collapse: collapse
 }
 
 table th {
@@ -132,10 +148,72 @@ table td ul li {
 	padding: 1%;
 }
 
-.orderTable td {
-	width: 24% !important;
+.orderForm div {
+	margin: 4px;
+	width: 100%;
+	float: left;
 }
 
-.orderTable th {
+.orderForm div label {
+	width: 30%;
+	float: left;
+}
+
+.orderForm div input {
+	width: 20%;
+	float: left;
+}
+
+.orderForm #credit label {
+	width: auto;
+	margin-right: 10px;
+}
+
+.orderForm #credit input {
+	width: 20%;
+	margin-right: 10px;
+}
+
+input[type="radio"] {
+	width: auto !important;
+}
+
+.orderForm #credit #expiry {
+	width: 10%;
+}
+
+
+.orderForm table {
+	margin: 2% 1%;
+}
+
+.orderForm table td {
+	width: 24% !important;
+	border: 1px solid #23B3B4;
+	height: 30px;
+	padding: 0px 5px;
+}
+
+.orderForm table th {
 	width: 24%;
+	border: 1px solid #23B3B4;
+	background-color: #23B3B4;
+	padding: 0px 5px;
+}
+
+.orderForm table td.blank {
+	border-bottom: none;
+  	border-left: none;
+  	border-right: none;
+}
+
+.orderForm table tr:last-child {
+	border-top: 2px solid #23B3B4;
+}
+
+.orderForm table input {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  border: none;
 }
