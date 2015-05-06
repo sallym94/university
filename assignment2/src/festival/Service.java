@@ -11,41 +11,20 @@ package festival;
  * destination venues in a service are distinct.)
  * </p>
  */
-
-
-
 public class Service {
 
-	
-	public static void main(String [] args) {
-		
-		Venue source = new Venue("v1");
-		Venue destination = new Venue("v2");
-		int session = 2;
-
-		Service service = new Service(source, destination, session);
-		//System.out.println(timetable);
-		//if (timetable.isEmpty()) {
-		 //   System.out.println("Empty");
-		//}
-		
-		System.out.println(service);
-		
-	}
-	
-	// REMOVE THIS LINE AND INSERT YOUR INSTANCE VARIABLES AND IMPLEMENTATION
-	/*
-	 * invariant:
-	 * 		&& source != null
-	 * 		&& destination != null
-	 * 		&& session > 0
-	 * 		&& source <> destination
-	*/
-	
-	//private ArrayList<String> venue;
+	// the venue that the service departs from
 	private Venue source;
+	// the venue that the service arrives at
 	private Venue destination;
+	// the service departs for its destination at the end of this session
 	private int session;
+
+	/*
+	 * Invariant: source != null && destination != null &&
+	 * !source.equals(destination) && session > 0
+	 */
+
 	/**
 	 * Creates a new service that departs the source venue at the end of the
 	 * given session, and arrives at the destination venue before the start of
@@ -65,22 +44,20 @@ public class Service {
 	 *             if session <= 0
 	 */
 	public Service(Venue source, Venue destination, int session) {
+		if (source == null || destination == null) {
+			throw new NullPointerException("Input parameters cannot be null");
+		}
+		if (source.equals(destination)) {
+			throw new InvalidServiceException(
+					"The source and destination venue cannot be the same");
+		}
+		if (session <= 0) {
+			throw new InvalidSessionException("Session number " + session
+					+ " must be positive");
+		}
 		this.source = source;
 		this.destination = destination;
 		this.session = session;
-		
-		
-		if (session <= 0){
-			throw new InvalidSessionException("The session less than or equal to 0, therefore invalid");
-		}
-		
-		if (source.equals(destination)){
-			throw new InvalidServiceException("The service has the same source and destination");
-		}
-		
-		if (source == null || destination == null){
-			throw new NullPointerException("The service has the same source and destination");
-		}
 	}
 
 	/**
@@ -89,9 +66,7 @@ public class Service {
 	 * @return the source venue of this service.
 	 */
 	public Venue getSource() {
-		//System.out.println(source);
 		return source;
-		
 	}
 
 	/**
@@ -100,8 +75,7 @@ public class Service {
 	 * @return the destination venue of this service.
 	 */
 	public Venue getDestination() {
-		//System.out.println(destination);
-		return destination; 
+		return destination;
 	}
 
 	/**
@@ -113,7 +87,6 @@ public class Service {
 	 * @return the session when this service departs
 	 */
 	public int getSession() {
-		//System.out.println(session);
 		return session;
 	}
 
@@ -126,20 +99,24 @@ public class Service {
 	 */
 	@Override
 	public boolean equals(Object object) {
-		
-		if (! (object instanceof Service)) return false;
-		Service s = (Service)object;
-		return source.equals(s.source) && destination.equals(s.destination) && (session == s.session);
-		
-		//return super.equals(object); // REMOVE THIS LINE AND WRITE THIS METHOD
+		if (!(object instanceof Service)) {
+			return false;
+		}
+		Service service = (Service) object; // service to compare
+		return this.source.equals(service.source)
+				&& this.destination.equals(service.destination)
+				&& this.session == service.session;
 	}
 
 	@Override
 	public int hashCode() {
-		
-		return source.hashCode() + destination.hashCode() + session;
-		
-		//return super.hashCode(); // REMOVE THIS LINE AND WRITE THIS METHOD
+		// calculates polynomial hashcode
+		final int prime = 31; // a prime
+		int result = 1; // hash code under construction
+		result = prime * result + source.hashCode();
+		result = prime * result + destination.hashCode();
+		result = prime * result + session;
+		return result;
 	}
 
 	/**
@@ -153,10 +130,8 @@ public class Service {
 	 */
 	@Override
 	public String toString() {
-		String sessionString;
-		sessionString = "Departs " + getSource() + 
-				" after session " + getSession() + " for " + getDestination();
-		return sessionString; // REMOVE THIS LINE AND WRITE THIS METHOD
+		return "Departs " + source + " after session " + session + " for "
+				+ destination;
 	}
 
 	/**
@@ -166,13 +141,8 @@ public class Service {
 	 * @return true if this Service is internally consistent, and false
 	 *         otherwise.
 	 */
-		
 	public boolean checkInvariant() {
-		if (source == null || destination == null 
-				|| session < 0 || source == destination) {
-			return false;
-		}
-				
-		return true; 
+		return (source != null && destination != null
+				&& !source.equals(destination) && session > 0);
 	}
 }

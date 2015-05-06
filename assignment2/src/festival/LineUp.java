@@ -27,14 +27,22 @@ import java.util.*;
  */
 public class LineUp implements Iterable<Event> {
 
-	// REMOVE THIS LINE AND INSERT YOUR INSTANCE VARIABLES AND IMPLEMENTATION
-	// INVARIANT HERE
+	// Correct line separator for executing machine (used in toString method)
+	private static String LINE_SEPARATOR = System.getProperty("line.separator");
+
+	// the events in the line-up
+	private List<Event> events;
+
+	/*
+	 * Invariant: events!=null && !events.contains(null) && there are no two
+	 * events scheduled in the same venue for the same session
+	 */
 
 	/**
 	 * Creates a new line-up with no events scheduled.
 	 */
 	public LineUp() {
-		// REMOVE THIS LINE AND WRITE THIS METHOD
+		events = new ArrayList<>();
 	}
 
 	/**
@@ -49,7 +57,37 @@ public class LineUp implements Iterable<Event> {
 	 *             session as the given event
 	 */
 	public void addEvent(Event event) {
-		// REMOVE THIS LINE AND WRITE THIS METHOD
+		if (event == null) {
+			throw new NullPointerException(
+					"Cannot add a null event to a line-up.");
+		}
+		if (sessionTaken(event.getVenue(), event.getSession())) {
+			throw new InvalidLineUpException(
+					"Line up already includes an event at venue "
+							+ event.getVenue() + " at time "
+							+ event.getSession());
+		}
+		events.add(event);
+	}
+
+	/**
+	 * Returns true if the given venue is already occupied for the given
+	 * session.
+	 * 
+	 * @param venue
+	 *            the venue to check
+	 * @param session
+	 *            the session to check
+	 * @return true if there is already an event scheduled for the given venue
+	 *         and session.
+	 */
+	private boolean sessionTaken(Venue venue, int session) {
+		for (Event e : events) {
+			if (e.getVenue().equals(venue) && e.getSession() == session) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -61,7 +99,7 @@ public class LineUp implements Iterable<Event> {
 	 *            the event to be removed from the line-up.
 	 */
 	public void removeEvent(Event event) {
-		// REMOVE THIS LINE AND WRITE THIS METHOD
+		events.remove(event);
 	}
 
 	/**
@@ -76,7 +114,19 @@ public class LineUp implements Iterable<Event> {
 	 *             if the given venue is null
 	 */
 	public List<Event> getEvents(Venue venue) {
-		return null; // REMOVE THIS LINE AND WRITE THIS METHOD
+		if (venue == null) {
+			throw new NullPointerException(
+					"Cannot retrieve events for a null venue.");
+		}
+		// the events for the given venue
+		List<Event> venueEvents = new ArrayList<>();
+		for (Event e : events) {
+			if (venue.equals(e.getVenue())) {
+				venueEvents.add(e);
+			}
+		}
+		Collections.sort(venueEvents);
+		return venueEvents;
 	}
 
 	/**
@@ -91,7 +141,19 @@ public class LineUp implements Iterable<Event> {
 	 *             if session <= 0
 	 */
 	public List<Event> getEvents(int session) {
-		return null; // REMOVE THIS LINE AND WRITE THIS METHOD
+		if (session <= 0) {
+			throw new InvalidSessionException("Session number " + session
+					+ " must be positive");
+		}
+		// the events for the given session
+		List<Event> sessionEvents = new ArrayList<>();
+		for (Event e : events) {
+			if (session == e.getSession()) {
+				sessionEvents.add(e);
+			}
+		}
+		Collections.sort(sessionEvents);
+		return sessionEvents;
 	}
 
 	/**
@@ -101,7 +163,11 @@ public class LineUp implements Iterable<Event> {
 	 * @return The venues where events from the line-up will take place.
 	 */
 	public Set<Venue> getVenues() {
-		return null; // REMOVE THIS LINE AND WRITE THIS METHOD
+		Set<Venue> venues = new HashSet<>(); // venues used by the line-up
+		for (Event e : events) {
+			venues.add(e.getVenue());
+		}
+		return venues;
 	}
 
 	/**
@@ -113,7 +179,17 @@ public class LineUp implements Iterable<Event> {
 	 *         number that an event is scheduled for, and 0 otherwise.
 	 */
 	public int getFirstUsedSession() {
-		return -1; // REMOVE THIS LINE AND WRITE THIS METHOD
+		if (events.isEmpty()) {
+			return 0;
+		}
+		// the minimum session number that there is an event scheduled for
+		int result = events.get(0).getSession();
+		for (Event e : events) {
+			if (e.getSession() < result) {
+				result = e.getSession();
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -125,7 +201,17 @@ public class LineUp implements Iterable<Event> {
 	 *         number that an event is scheduled for, and 0 otherwise.
 	 */
 	public int getLastUsedSession() {
-		return -1; // REMOVE THIS LINE AND WRITE THIS METHOD
+		if (events.isEmpty()) {
+			return 0;
+		}
+		// the maximum session number that there is an event scheduled for
+		int result = events.get(0).getSession();
+		for (Event e : events) {
+			if (e.getSession() > result) {
+				result = e.getSession();
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -133,7 +219,7 @@ public class LineUp implements Iterable<Event> {
 	 */
 	@Override
 	public Iterator<Event> iterator() {
-		return null; // REMOVE THIS LINE AND WRITE THIS METHOD
+		return events.iterator();
 	}
 
 	/**
@@ -148,7 +234,15 @@ public class LineUp implements Iterable<Event> {
 	 */
 	@Override
 	public String toString() {
-		return null; // REMOVE THIS LINE AND WRITE THIS METHOD
+		Collections.sort(events);
+		String result = ""; // the string representation under construction
+		for (int i = 0; i < events.size(); i++) {
+			if (i != 0) {
+				result += LINE_SEPARATOR;
+			}
+			result = result + events.get(i).toString();
+		}
+		return result;
 	}
 
 	/**
@@ -159,7 +253,26 @@ public class LineUp implements Iterable<Event> {
 	 *         otherwise.
 	 */
 	public boolean checkInvariant() {
-		return true; // REMOVE THIS LINE AND WRITE THIS METHOD
+		return (events != null && !events.contains(null) && !eventsClash());
+	}
+
+	/**
+	 * Returns true if there are two or more events scheduled for both the same
+	 * venue and session time.
+	 * 
+	 * @return true if there are two or more events occurring at the same venue
+	 *         at the same time
+	 */
+	private boolean eventsClash() {
+		for (Event a : events) {
+			for (Event b : events) {
+				if (!a.equals(b) && a.getVenue().equals(b.getVenue())
+						&& a.getSession() == b.getSession()) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }

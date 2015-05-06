@@ -2,7 +2,6 @@ package festival;
 
 import java.util.*;
 
-
 /**
  * <p>
  * A mutable representation of the shuttle services between venues at a
@@ -15,49 +14,19 @@ import java.util.*;
  * </p>
  */
 public class ShuttleTimetable implements Iterable<Service> {
-	
-	// REMOVE THIS LINE AND INSERT YOUR INSTANCE VARIABLES AND IMPLEMENTATION
-	/*
-	 * invariant:
-	 * 		&& service != null
-	 * 		&& destination != null
-	 * 		&& session > 0
-	 * 		&& source <> destination
-	*/
-	
-	public static void main(String [] args) {
-		Venue source = new Venue("v1");
-		Venue destination = new Venue("v2");
-		int session = 2;
 
-		Service service = new Service(source, destination, session);
-		
-		ShuttleTimetable timetable = new ShuttleTimetable();
-		Service s1 = new Service(new Venue(
-				"The Arena"), new Venue("House of Noise"), 3);
-		timetable.addService(service);
-		timetable.addService(s1);
-		timetable.getDestinations(new Venue("The Arena"), 3);
-		
-		//System.out.println(timetable);
-		//if (timetable.isEmpty()) {
-		 //   System.out.println("Empty");
-		//}
-		
-		//System.out.println(service);
-		//System.out.println(timetable);
-	}
-	
-	private ArrayList<Service> timetable;
-	private Service service;
-	
-	
+	// the services in the shuttle timetable
+	private Set<Service> services;
+
+	/*
+	 * Invariant: services != null
+	 */
+
 	/**
 	 * Constructs a new shuttle timetable without any services.
 	 **/
 	public ShuttleTimetable() {
-		// REMOVE THIS LINE AND WRITE THIS METHOD 
-		timetable = new ArrayList<Service>(); 
+		services = new HashSet<>();
 	}
 
 	/**
@@ -75,11 +44,11 @@ public class ShuttleTimetable implements Iterable<Service> {
 	 *             if service is null
 	 */
 	public void addService(Service service) {
-		if (service == null){
-			throw new NullPointerException("The service is equal to null");
+		if (service == null) {
+			throw new NullPointerException("Service cannot be null");
 		}
-		if (!timetable.contains(service)){
-		timetable.add(service);
+		if (!services.contains(service)) {
+			services.add(service);
 		}
 	}
 
@@ -92,7 +61,7 @@ public class ShuttleTimetable implements Iterable<Service> {
 	 *            the service to be removed from the timetable.
 	 */
 	public void removeService(Service service) {
-		timetable.remove(service);
+		services.remove(service);
 	}
 
 	/**
@@ -105,10 +74,14 @@ public class ShuttleTimetable implements Iterable<Service> {
 	 *         the given parameter.
 	 */
 	public boolean hasService(Service service) {
-		if(timetable.contains(service)){
-			return true;
-		}
-		return false;
+		return services.contains(service);
+	}
+
+	/**
+	 * Returns the number of services in the shuttle timetable.
+	 */
+	public int size() {
+		return services.size();
 	}
 
 	/**
@@ -126,44 +99,31 @@ public class ShuttleTimetable implements Iterable<Service> {
 	 *             if source is null
 	 * @throws InvalidSessionException
 	 *             if the session number is not positive
-	 *            
 	 */
 	public Set<Venue> getDestinations(Venue source, int session) {
-		
-		if (source == null){
-			throw new NullPointerException("The source is equal to null");
+		if (source == null) {
+			throw new NullPointerException("The source venue cannot be null");
 		}
-		if (session < 1){
-			throw new NullPointerException("The session is less than 1");
+		if (session <= 0) {
+			throw new InvalidSessionException("Session number " + session
+					+ " must be positive");
 		}
-		System.out.println(source);
-		System.out.println(session);
-		Set<Venue> destinations = new HashSet<Venue>();
-			
-		for (int i=0; i < timetable.size(); i++) {
-			Service currentService = timetable.get(i); 
-			
-			if (currentService.getSource() == source && currentService.getSession() == session) {
-				destinations.add(currentService.getSource());
-				System.out.println(currentService.getSource());
-				System.out.println(currentService.getSession());
-			};
+		// venues reachable from source at end of the session
+		Set<Venue> destinations = new HashSet<>();
+		for (Service s : services) {
+			if (s.getSource().equals(source) && s.getSession() == session) {
+				destinations.add(s.getDestination());
+			}
 		}
-		
-		System.out.println(destinations);
 		return destinations;
 	}
 
 	/**
 	 * Returns an iterator over the services in the shuttle timetable.
-	 * 
-	 * 
-	 * 
-	 * 
 	 */
 	@Override
 	public Iterator<Service> iterator() {
-		return timetable.iterator();
+		return services.iterator();
 	}
 
 	/**
@@ -172,16 +132,7 @@ public class ShuttleTimetable implements Iterable<Service> {
 	 */
 	@Override
 	public String toString() {
-			
-		String timetableString = "";
-
-		for (Service s : timetable)
-		{
-		    timetableString += s + "\t";
-		}
-
-		//System.out.println(timetableString);
-		return timetableString;
+		return services.toString();
 	}
 
 	/**
@@ -192,7 +143,7 @@ public class ShuttleTimetable implements Iterable<Service> {
 	 *         otherwise.
 	 */
 	public boolean checkInvariant() {
-		return true; // REMOVE THIS LINE AND WRITE THIS METHOD
+		return services != null;
 	}
 
 }

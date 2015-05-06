@@ -13,25 +13,15 @@ package festival;
  */
 public class Event implements Comparable<Event> {
 
-	
-	public static void main(String [] args) {
-			
-			Event e1 = new Event(new Venue("v1"), 2, new String( "testact"));
-			//Service s2 = new Service(new Venue("v2"), new Venue("v3"), 2);
-			//System.out.println("test" + s1.equals(s2)); 
-			System.out.println(e1);
-			
-	}
-	// REMOVE THIS LINE AND INSERT YOUR INSTANCE VARIABLES AND IMPLEMENTATION
-	/*
-	 * invariant:
-	 * 		&& venue != null
-	 * 		&& act != null
-	 * 		&& session > 0
-	*/
+	// the venue where the event is happening
 	private Venue venue;
+	// the number of the session this event will occur in
 	private int session;
+	// a description of the act that is playing at this event
 	private String act;
+
+	/* Invariant: venue!= null && act != null && 0 < session */
+
 	/**
 	 * Creates a new event for the given venue, session and act.
 	 * 
@@ -47,19 +37,16 @@ public class Event implements Comparable<Event> {
 	 *             if session is not a positive integer
 	 */
 	public Event(Venue venue, int session, String act) {
+		if (venue == null || act == null) {
+			throw new NullPointerException("Parameters cannot be null");
+		}
+		if (session <= 0) {
+			throw new InvalidSessionException("Session number " + session
+					+ " must be positive");
+		}
 		this.venue = venue;
 		this.session = session;
 		this.act = act;
-		
-		if (venue == null || act == null){
-			throw new NullPointerException("The venue or act is null");
-		}
-		
-		if (session <=-1){
-			throw new InvalidSessionException("The session is not a positive integer");
-		}
-		
-		
 	}
 
 	/**
@@ -68,7 +55,7 @@ public class Event implements Comparable<Event> {
 	 * @return the venue of the event
 	 */
 	public Venue getVenue() {
-		return venue; // REMOVE THIS LINE AND WRITE THIS METHOD
+		return venue;
 	}
 
 	/**
@@ -77,7 +64,7 @@ public class Event implements Comparable<Event> {
 	 * @return the session number of the event
 	 */
 	public int getSession() {
-		return session; // REMOVE THIS LINE AND WRITE THIS METHOD
+		return session;
 	}
 
 	/**
@@ -86,7 +73,7 @@ public class Event implements Comparable<Event> {
 	 * @return the act of the event.
 	 */
 	public String getAct() {
-		return act; // REMOVE THIS LINE AND WRITE THIS METHOD
+		return act;
 	}
 
 	/**
@@ -99,10 +86,7 @@ public class Event implements Comparable<Event> {
 	 */
 	@Override
 	public String toString() {
-		String sessionString;
-		sessionString = getAct() + ": session " + getSession() + " at " + getVenue();
-		System.out.println(sessionString);
-		return sessionString;
+		return act + ": session " + session + " at " + venue;
 	}
 
 	/**
@@ -120,7 +104,13 @@ public class Event implements Comparable<Event> {
 	 */
 	@Override
 	public boolean equals(Object object) {
-		return super.equals(object); // REMOVE THIS LINE AND WRITE THIS METHOD
+		if (!(object instanceof Event)) {
+			return false;
+		}
+		Event event = (Event) object; // event to compare
+		return (this.venue.equals(event.venue))
+				&& (this.session == event.session)
+				&& (this.act.equals(event.act));
 	}
 
 	/**
@@ -131,7 +121,13 @@ public class Event implements Comparable<Event> {
 	 */
 	@Override
 	public int hashCode() {
-		return super.hashCode(); // REMOVE THIS LINE AND WRITE THIS METHOD
+		// creates a polynomial hashcode based on the fields of the event.
+		final int prime = 31; // an odd base prime
+		int result = 1; // the hash code under construction
+		result = prime * result + act.hashCode();
+		result = prime * result + session;
+		result = prime * result + venue.hashCode();
+		return result;
 	}
 
 	/**
@@ -142,7 +138,15 @@ public class Event implements Comparable<Event> {
 	 */
 	@Override
 	public int compareTo(Event event) {
-		return 0; // REMOVE THIS LINE AND WRITE THIS METHOD
+		// the result of comparing this to the event
+		int result = venue.getName().compareTo(event.venue.getName());
+		if (result == 0) {
+			result = session - event.session;
+		}
+		if (result == 0) {
+			result = act.compareTo(event.act);
+		}
+		return result;
 	}
 
 	/**
@@ -150,11 +154,8 @@ public class Event implements Comparable<Event> {
 	 * its class invariant).
 	 * 
 	 * @return true if this Event is internally consistent, and false otherwise.
-	*/
+	 */
 	public boolean checkInvariant() {
-		if (venue == null || act == null || session < 0) {
-			return false;
-		}
-		return true;
+		return (venue != null && act != null && session > 0);
 	}
 }
