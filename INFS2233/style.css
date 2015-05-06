@@ -1,0 +1,219 @@
+body, html {
+	padding: 0;
+	margin: 0;
+	font-family: arial;
+}
+
+a {
+	text-decoration: none;
+	color: #23B3B4;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	margin: 1% 0;
+	font-size:24px;
+}
+
+h2 {
+	margin-bottom: 0px;
+	font-size:20px;
+}
+
+h3 {
+	color: #fff;
+	margin: 1%;
+
+}
+
+
+
+.emphasis {
+	font-size: 12px;
+	color: #23B3B4;
+	font-style: italic;
+	text-align: center;
+}
+
+.wrapper {
+	width: 80%;
+	margin: auto;
+}
+
+header {
+	background-color: #23B3B4;
+	width: 100%;
+	float: left;
+}
+
+header img {
+	float: left;
+	margin-left: 25px;
+}
+
+nav ul {
+	float: right;
+	margin: 10px 25px;
+}
+
+nav ul li {
+	display: inline-block;
+	margin: 5px 0;
+	padding: 0 5px;
+	border-right: 1px solid #fff;
+}
+
+nav ul li:last-child {
+	border: none;
+}
+
+nav ul li a {
+	color: #fff;
+	
+}
+
+nav ul li a:hover {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.content {
+	margin: 0px 25px 45px;
+	float: left;
+}
+
+.content .banner {
+	width: 90%;
+	margin: 1% 5% 1%;
+}
+
+.content .frontProducts ul {
+	padding: 0;
+}
+
+.content .frontProducts ul li {
+	display: inline-block;
+	width: 22%;
+	padding: 0 1%;
+}
+
+.content .frontProducts ul li p {
+	
+}
+
+footer {
+	position: fixed;
+	height: auto;
+	bottom: 0;
+	background-color: #E8E9E3;
+	width: 100%;
+	margin: 0;
+}
+
+footer div {
+	width:90%;
+	margin:auto;
+	text-align: center;
+}
+
+footer p, footer a {
+	font-size: 10px;
+	display: inline-block;
+	text-align: center;
+	padding: 0px;
+	margin: 8px 2px 0px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse
+}
+
+table th {
+	text-align: left;
+}
+
+table td:first-child {
+	width: 55%;
+}
+
+table td ul {
+	list-style: none;
+}
+
+table td ul li {
+	padding: 1%;
+}
+
+.orderForm div {
+	margin: 4px;
+	width: 100%;
+	float: left;
+}
+
+.orderForm div label {
+	width: 30%;
+	float: left;
+}
+
+.orderForm div input {
+	width: 20%;
+	float: left;
+}
+
+.orderForm #credit label {
+	width: auto;
+	margin-right: 10px;
+}
+
+.orderForm #credit input {
+	width: 20%;
+	margin-right: 10px;
+}
+
+input[type="radio"] {
+	width: auto !important;
+}
+
+.orderForm #credit #expiry {
+	width: 10%;
+}
+
+
+.orderForm table {
+	margin: 2% 1%;
+}
+
+.orderForm table td {
+	width: 24% !important;
+	border: 1px solid #23B3B4;
+	height: 30px;
+	padding: 0px 5px;
+}
+
+.orderForm table th {
+	width: 24%;
+	border: 1px solid #23B3B4;
+	background-color: #23B3B4;
+	padding: 0px 5px;
+}
+
+.orderForm table td.blank {
+	border-bottom: none;
+  	border-left: none;
+  	border-right: none;
+}
+
+.orderForm table tr:last-child {
+	border-top: 2px solid #23B3B4;
+}
+
+.orderForm table input {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  border: none;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<meta name="author" content="Sally Mills, Astrid Farmer">
+<meta charset="UTF-8">
+<title>STORE NAME:Order</title>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<nav>
+				<img src="logo.jpg" alt="logo">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="products.html">Products</a></li>
+					<li><a href="order.html">Order</a></li>
+				</ul>	
+			</nav>	
+		</header>
+		<div class="content">
+			<h1>Order</h1>
+			<form class="orderForm">
+			    <div>
+			        <label>Name:</label>
+			        <input type="text"/>
+			    </div>
+			    <div>
+			        <label>Contact number:</label>
+			        <input type="text"/>
+			    </div>
+			    <div>
+			        <label>Fax:</label>
+			        <input type="text"/>
+			    </div>
+			    <div>
+			        <label>Billing Address:</label>
+			        <input type="text"/>
+			    </div>
+			    <div>
+				    <p><strong>Payment Options</strong></p>
+				    <input type="radio" name="payment" value="Bank Transfer">Bank Transfer</br>
+					<input type="radio" name="payment" value="Credit Card">Credit Card</br>
+					<input type="radio" name="payment" value="Cash Postage/Cheque">Cash Postage/Cheque</br>
+				</div>
+
+			    <div id="credit">
+			    	<p><strong>Credit Card Details</strong></p>
+			        <label>Card Holder Name</label>
+			        <input type="text"/>
+			        <label>Account Number</label>
+			        <input type="text"/>
+			        <label>Expiry Date</label>
+			        <input type="text" id="expiry"/>
+			    </div>
+			    <div>
+			        <table class="orderTable">
+						<tr>
+							<th>
+								<h3>Item Number</h3>
+							</th>
+							<th>
+								<h3>Description</h3>
+							</th>
+							<th>
+								<h3>Quanitity</h3>
+							</th>
+							<th>
+								<h3>Price</h3>
+							</th>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td class="blank"></td>
+							<td class="blank"></td>
+							<td><strong>Total price:</strong></td>
+							<td></td>
+						</tr>
+					</table>
+			    </div>
+			    
+			    <div class="button">
+			        <button type="submit">Order</button>
+			        <button type="submit">Print and Order</button>
+			    </div>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<div>
+			<p>Store Name | </p>
+			<a href="disclaimer.html">Disclaimer</a></br>
+		</div>
+		<div>
+			<p><i>
+				This page is fictional. It is for assessment purposes only in the course of INFS2233, Electronic
+				Commerce Fundamentals, at The University of Queensland. 
+			</i></p>
+		</div>
+	</footer>
+	
+</body>
