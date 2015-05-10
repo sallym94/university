@@ -43,6 +43,9 @@ public class DayPlanner {
 	 *         See the assignment hand-out for details.
 	 */
 	public boolean compatible(List<Event> plan) {
+		/*checks there are no duplicates within the plan
+		 * if not returns false
+		 */
 		
 		if (duplicateEvents(plan) == false){
 			return false;
@@ -50,17 +53,26 @@ public class DayPlanner {
 			return false;
 		}
 		
+		/*compares the events to see if they are compatible
+		 * and that the plan works
+		 */
 		for (int i=0; i < plan.size(); i++) {
 			
-			Event event = plan.get(i);
-			int sourceSession = event.getSession();
-			Venue source = event.getVenue();
+			//gets an event
+			Event sourceEvent = plan.get(i);
+			//sets the source session for the event
+			int sourceSession = sourceEvent.getSession();
+			//sets the source venue for the event
+			Venue source = sourceEvent.getVenue();
 			
 			for (int j=0; j < plan.size(); j++) {
-				
+				//gets the event to compare with
+				Event event = plan.get(j);
+				//sets the destination session for the event
 				int destinationSession = event.getSession();
+				//sets the destination venue for the event
 				Venue destination = event.getVenue();
-				
+				//uses canReach method to see if the journey is possible
 				if (canReach(source, sourceSession, 
 						destination, destinationSession) == true){
 					return true;
@@ -70,19 +82,44 @@ public class DayPlanner {
 		return false; 
 	}
 	
-	
+	/**
+	* <p>
+	 * returns true or false as to whether there are any duplicates
+	 * events in the list
+	 * </p>
+	 * 
+	 * @param plan
+	 *            the list a plan of events
+	 * 
+	 */
 	private boolean duplicateEvents(List<Event> plan){
+		//creates a set from the list to condense the tokens
 		Set<Event> eventSet = new HashSet<Event>(plan);
+		//if the set is smaller than there are duplicate events
 		if(eventSet.size() < plan.size()){
 		    return false;
 		}
 		return true;
 	}
 	
+	/**
+	* <p>
+	 * returns true or false as to whether there are any duplicates
+	 * sessions in the list
+	 * </p>
+	 * 
+	 * @param plan
+	 *            the list a plan of events
+	 * 
+	 */
 	private boolean duplicateSessions(List<Event> plan){
+		/*creates loop to check every session against
+		 * the other sessions
+		 */
 		for (int i=0; i < plan.size(); i++) {
 			Event event = plan.get(i);
 			int eventSes1 = event.getSession();
+			//creates a loop insides to compare i and j
 			for (int j=0; j < plan.size(); j++) {
 				Event event2 = plan.get(i);
 				int eventSes2 = event2.getSession();
@@ -94,21 +131,40 @@ public class DayPlanner {
 		return true;
 	}
 	
+	/**
+	* <p>
+	 * returns true or false as to whether it is possible to reach
+	 * the destination in time for the session
+	 * </p>
+	 * 
+	 * @param source
+	 *            the source venue
+	 * @param sourceSession
+	 *            the session of the source venue
+	 * @param destination
+	 *            the destination venue
+	 * @param destinationSession
+	 *            the session of the destination venue
+	 */
 	private boolean canReach(Venue source, int sourceSession, 
 			Venue destination, int destinationSession){
+		//tests first base case whether sourceSession > destinationSession
 		if (sourceSession > destinationSession){
 			return false;
 		}
+		//tests second base
 		if (sourceSession == destinationSession && source != destination){
 			return true;
 		}
+		//tests third base
 		if (sourceSession == destinationSession && source == destination){
 			return true;
 		}
+		//tests fourth base
 		if (sourceSession < destinationSession && source == destination){
 			return true;
 		}
-		
+		//uses recursive method to solve final case **Note, I know this doesn't work
 		if (sourceSession < destinationSession && source != destination){
 			Venue finalDestination = destination;
 			int finalSession = destinationSession;
