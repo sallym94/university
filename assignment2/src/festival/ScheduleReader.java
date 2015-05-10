@@ -1,6 +1,7 @@
 package festival;
 
 import java.io.*;
+import java.util.*;
 import java.util.Scanner;
 
 /**
@@ -9,7 +10,8 @@ import java.util.Scanner;
 public class ScheduleReader {
 
 	public static void main(String[] args) throws IOException, FormatException {
-		ScheduleReader.read("read_08_incorrectlyFormatted.txt");
+		ScheduleReader.read("timetable_01.txt");
+		
 	}
 
 	/**
@@ -75,6 +77,24 @@ public class ScheduleReader {
 			FormatException {
 		//Creates a new timetable to return at the end of the method
 		ShuttleTimetable timetable = new ShuttleTimetable();
+		List<String> scheduleList = new ArrayList<String>(createScheduleArray(fileName));
+		int numOfSession = new Integer(getNumOfSessions(scheduleList));
+		scheduleList.remove(0);
+		int scheduleSize = scheduleList.size();
+		
+		System.out.println(scheduleSize);
+		System.out.println(scheduleList);
+		
+		
+		for (int i = 0; i < ((scheduleSize)/(numOfSession + 2)); i++){
+			
+			List<String> currentVenue = new ArrayList<String>(seperateVenues(scheduleList, numOfSession, i));
+			System.out.println(currentVenue);
+			
+			
+		}
+		
+		System.out.println(numOfSession);
 		
 		//trys method to see if IOException if thrown
 		try {
@@ -146,9 +166,9 @@ public class ScheduleReader {
 													+ "	duplicate service of: "
 													+ service);
 								}
-								System.out
-										.println("Service about to be added: "
-												+ service);
+								//System.out
+										//.println("Service about to be added: "
+											//	+ service);
 
 								timetable.addService(service);
 							} catch (InvalidServiceException ne) {
@@ -167,9 +187,73 @@ public class ScheduleReader {
 		} catch (IOException e) {
 			System.err.println("IOException: " + e);
 		}
-		System.out.println(timetable);
+		//System.out.println(timetable);
 		return timetable;
 
 	}
+	
+	private static List<String> createScheduleArray(String fileName) throws IOException,
+	FormatException{
+		List<String> readScheduleList = new ArrayList<String>();
+		
+		try {
+			//creates a new fileReader to read the supplied fileName
+			FileReader fr = new FileReader(fileName);
+			//creates a BufferedReader to read the lines of the file
+			BufferedReader br = new BufferedReader(fr);
+	
+			//creates a variable to store each line under as it is read
+			String sCurrentLine = br.readLine();
+			readScheduleList.add(sCurrentLine);
+			//stores the first line of the document under a variable containing
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+				
+				readScheduleList.add(sCurrentLine);
+			}
+			
+			br.close();
+		} catch (IOException e) {
+			System.err.println("IOException: " + e);
+		}
+		
+		System.out.println(readScheduleList);
+		return readScheduleList;
+	}
 
+	private static int getNumOfSessions(List<String> scheduleList){
+		String sessions = scheduleList.get(0);
+		int numOfSessions = new Integer(sessions);
+		return numOfSessions;
+	}
+	
+	
+	
+	
+	
+	private static List<String> seperateVenues(List<String> scheduleList, int numOfSessions, int venueNum) {
+		//creates and initialises new list to store a seperate venue timetable in
+		List<String> seperateVenues = new ArrayList<String>();
+		
+		//creates new variable containing the starting index that the new list will begin at
+		int startingIndex = (numOfSessions*venueNum)+(venueNum*2);
+		
+		//Goes through each the list starting at the starting index and adds the venues timetable to a list
+		for (int i = startingIndex; i < (startingIndex + numOfSessions + 2); i++){
+			seperateVenues.add(scheduleList.get(i));
+		}
+		
+		//returns the list
+		return seperateVenues;
+	}
+	
+	
+	
+	
+	
+	private static Venue getSource(List<String> scheduleList, int numOfSessions){
+		Venue sourceVenue = new Venue(scheduleList.get(numOfSessions));
+		
+		return sourceVenue;
+	}
 }

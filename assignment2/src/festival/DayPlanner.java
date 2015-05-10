@@ -43,7 +43,85 @@ public class DayPlanner {
 	 *         See the assignment hand-out for details.
 	 */
 	public boolean compatible(List<Event> plan) {
-		return false; // REMOVE THIS LINE AND WRITE THIS METHOD
+		
+		if (duplicateEvents(plan) == false){
+			return false;
+		}else if (duplicateSessions(plan) == false){
+			return false;
+		}
+		
+		for (int i=0; i < plan.size(); i++) {
+			
+			Event event = plan.get(i);
+			int sourceSession = event.getSession();
+			Venue source = event.getVenue();
+			
+			for (int j=0; j < plan.size(); j++) {
+				
+				int destinationSession = event.getSession();
+				Venue destination = event.getVenue();
+				
+				if (canReach(source, sourceSession, 
+						destination, destinationSession) == true){
+					return true;
+				}
+			}
+		}
+		return false; 
+	}
+	
+	
+	private boolean duplicateEvents(List<Event> plan){
+		Set<Event> eventSet = new HashSet<Event>(plan);
+		if(eventSet.size() < plan.size()){
+		    return false;
+		}
+		return true;
+	}
+	
+	private boolean duplicateSessions(List<Event> plan){
+		for (int i=0; i < plan.size(); i++) {
+			Event event = plan.get(i);
+			int eventSes1 = event.getSession();
+			for (int j=0; j < plan.size(); j++) {
+				Event event2 = plan.get(i);
+				int eventSes2 = event2.getSession();
+				if (eventSes1 == eventSes2){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	private boolean canReach(Venue source, int sourceSession, 
+			Venue destination, int destinationSession){
+		if (sourceSession > destinationSession){
+			return false;
+		}
+		if (sourceSession == destinationSession && source != destination){
+			return true;
+		}
+		if (sourceSession == destinationSession && source == destination){
+			return true;
+		}
+		if (sourceSession < destinationSession && source == destination){
+			return true;
+		}
+		
+		if (sourceSession < destinationSession && source != destination){
+			Venue finalDestination = destination;
+			int finalSession = destinationSession;
+			
+			if (timetable.getDestinations(source, sourceSession).contains(finalDestination)){
+				return true;
+			}
+			else {
+				canReach(source, sourceSession, 
+						destination, destinationSession);
+			}
+		}
+		return false;
 	}
 
 }
