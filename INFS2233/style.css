@@ -1,32 +1,42 @@
 body, html {
 	padding: 0;
 	margin: 0;
-	font-family: arial;
+	font-family: Georgia, serif;
+	color: #383A3A;
 }
 
 a {
 	text-decoration: none;
-	color: #23B3B4;
+	color: #383A3A;
 }
 
 a:hover {
 	text-decoration: underline;
+	color: #23B3B4;
+}
+
+p a {
+	color: #23B3B4;
 }
 
 h1 {
 	margin: 1% 0;
 	font-size:24px;
+	font-weight: normal;
+	color: #000;
 }
 
 h2 {
 	margin-bottom: 0px;
 	font-size:20px;
+	font-weight: normal;
+	color: #23B3B4;
 }
 
 h3 {
 	color: #fff;
 	margin: 1%;
-
+	font-weight: normal;
 }
 
 
@@ -39,12 +49,12 @@ h3 {
 }
 
 .wrapper {
-	width: 80%;
+	width: 70%;
 	margin: auto;
 }
 
 header {
-	background-color: #23B3B4;
+	
 	width: 100%;
 	float: left;
 }
@@ -52,6 +62,8 @@ header {
 header img {
 	float: left;
 	margin-left: 25px;
+	margin-top: 10px;
+  	width: 25%;
 }
 
 nav ul {
@@ -70,38 +82,83 @@ nav ul li:last-child {
 	border: none;
 }
 
-nav ul li a {
-	color: #fff;
+
+nav ul li a:hover {
+	color: #23B3B4;
+	text-decoration: underline;
+}
+
+nav ul li a.selected {
+	color: #23B3B4;
 	
 }
 
-nav ul li a:hover {
-	font-weight: bold;
-	text-decoration: none;
+.content {
+	margin: 0px 25px 50px;
+	float: left;
 }
 
-.content {
-	margin: 0px 25px 45px;
+.content .fullWidth {
+	width: 100%;
+	overflow: hidden;
+}
+
+.content .pullHalf {
 	float: left;
+	width: 60%;
 }
 
 .content .banner {
 	width: 90%;
-	margin: 1% 5% 1%;
+	margin: 2% 5% 1%;
 }
+
+.content .hotspot {
+	width: 333px;
+ 	/*margin: 0% 30% 0%;*/
+ 	float: right;
+}
+
+
 
 .content .frontProducts ul {
 	padding: 0;
+}
+
+area {
+	outline: 1px solid #23B3B4;
 }
 
 .content .frontProducts ul li {
 	display: inline-block;
 	width: 22%;
 	padding: 0 1%;
+	vertical-align: top;
+}
+
+.content .frontProducts ul li img {
+	width: 90%;
+	margin: 0 5%;
 }
 
 .content .frontProducts ul li p {
 	
+}
+
+.content .quotes {
+	width: 100%;
+}
+
+.content .quotesCol {
+	float: left;
+	width: 50%;
+}
+
+.content .quotesCol blockquote {
+	padding-bottom: 10px;
+}
+.content .quotesCol blockquote:last-child {
+	padding-bottom: 0px;
 }
 
 footer {
@@ -127,6 +184,10 @@ footer p, footer a {
 	margin: 8px 2px 0px;
 }
 
+footer span {
+	color: #23B3B4;
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse
@@ -146,6 +207,11 @@ table td ul {
 
 table td ul li {
 	padding: 1%;
+}
+
+table img {
+	width: 85%;
+  	padding-left: 10%;
 }
 
 .orderForm div {
@@ -216,4 +282,19 @@ input[type="radio"] {
   height: 100%;
   font-size: 16px;
   border: none;
+}
+
+.orderForm button {
+	background-color: #23B3B4;
+	border: none;
+	color: #ffffff;
+	padding: 10px;
+	font-size: 14px;
+	font-family: Georgia, serif;
+	cursor: pointer;
+}
+
+.orderForm button:hover {
+	background-color: #28C6C1;
+
 }

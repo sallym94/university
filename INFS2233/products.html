@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="style.css">
-<meta name="author" content="Sally Mills, Astrid Farmer">
-<meta charset="UTF-8">
-<title>STORE NAME: Products</title>
+	<link rel="stylesheet" href="style.css">
+	<meta name="author" content="Sally Mills, Astrid Farmer">
+	<meta charset="UTF-8">
+	<title>STORE NAME: Products</title>
+	<script src="scripts/jquery-1.11.2.min.js"></script>
+	
+
 </head>
 <body>
 	<div class="wrapper">
 		<header>
 			<nav>
-				<img src="logo.jpg" alt="logo">
+				<a class="selected" href="index.html"><img src="images/logo.png" alt="logo"></a>
 				<ul>
 					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">About</a></li>
-					<li><a href="products.html">Products</a></li>
+					<li><a class="selected" href="products.html">Products</a></li>
 					<li><a href="order.html">Order</a></li>
 				</ul>	
 			</nav>	
 		</header>
 		<div class="content">
-			<img src="images/banner.jpg" alt="banner" class="banner">
+			<img src="images/products.png" alt="banner" class="banner">
 			<h1>Products</h1>
 
 			<table>
 				<tr>
-					<th><a href="product1.html"><h2>Product 1</h2></a></th>
+					<th><a href="product1.html"><h2>HTML & CSS</h2></a></th>
 				</tr>
 				<tr>
 					<td>
-						<p>Lots of fantastic information about this bogus store. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam neque feugiat nibh imperdiet, in rutrum nisl posuere. Nam varius sed nibh ut posuere. Sed in turpis mattis enim egestas mollis.</p>
+						<p>This fantastic software will teach you how to 
+						develop and code websites using HTML and CSS. HTML and CSS are used widely around the world as the basis for every webpage. This is the
+						perfect starting point for your website. Start <a href="product1.html">learning HTML & CSS</a> today!</p>
 					<td>
 					<td>
 						<ul>
 							<li>Item Number: 1</li>
 							<li>Version: 
 								<select>
-									<option>Basic</option>
-									<option>Intermediate</option>
-									<option>Advanced</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
 								</select>	
 							</li>
 							<li>Price: $50.00</li>
@@ -46,33 +51,34 @@
 						</ul>	
 					<td>
 					<td>
-						<img src="product1.jpg" alt="product1">
+						<img src="images/html_css.png" alt="product1">
 					<td>
 				</tr>
-				<th><a href="product2.html"><h2>Product 2</h2></a></th>
+				<th><a href="product2.html"><h2>Javascript</h2></a></th>
 				<tr>
 					<td>
-						<p>Lots of fantastic information about this bogus store. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam neque feugiat nibh imperdiet, in rutrum nisl posuere. Nam varius sed nibh ut posuere. Sed in turpis mattis enim egestas mollis.</p>
+						<p>This Javascript software will teach you the ins and out of coding javascript to websites and beyound. Learn to make your website dynamic and interactive, thus improving your usability for you customers. Start <a href="product2.html">learning Javascript</a> today!</p>
 					<td>
 					<td>
 						<ul>
 							<li>Item Number: 2</li>
 							<li>Version: 
 								<select>
-									<option>Basic</option>
-									<option>Intermediate</option>
-									<option>Advanced</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
 								</select>	
 							</li>
-							<li>Price: $50.00</li>
-							<li>Discounted 10%: $45.00</li>
+							<li id="starter">Price: $50.00</li>
+							<li id="standard">Price: $10.00/week or $40.00/month</li>
+							<li id="unlimited">Price: $99.00</li>
 						</ul>	
 					<td>
 					<td>
-						<img src="product2.jpg" alt="product2">
+						<img src="images/js3.png" alt="product2">
 					<td>
 				</tr>
-				<th><a href="product3.html"><h2>Product 3</h2></a></th>
+				<th><a href="product3.html"><h2>Python</h2></a></th>
 				<tr>
 					<td>
 						<p>Lots of fantastic information about this bogus store. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam neque feugiat nibh imperdiet, in rutrum nisl posuere. Nam varius sed nibh ut posuere. Sed in turpis mattis enim egestas mollis.</p>
@@ -82,9 +88,9 @@
 							<li>Item Number: 3</li>
 							<li>Version: 
 								<select>
-									<option>Basic</option>
-									<option>Intermediate</option>
-									<option>Advanced</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
 								</select>	
 							</li>
 							<li>Price: $50.00</li>
@@ -92,10 +98,10 @@
 						</ul>	
 					<td>
 					<td>
-						<img src="product3.jpg" alt="product3">
+						<img src="images/python.png" alt="product3">
 					<td>
 				</tr>
-				<th><a href="product4.html"><h2>Product 4</h2></a></th>
+				<th><a href="product4.html"><h2>Java</h2></a></th>
 				<tr>
 					<td>
 						<p>Lots of fantastic information about this bogus store. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam neque feugiat nibh imperdiet, in rutrum nisl posuere. Nam varius sed nibh ut posuere. Sed in turpis mattis enim egestas mollis.</p>
@@ -105,9 +111,9 @@
 							<li>Item Number: 4</li>
 							<li>Version: 
 								<select>
-									<option>Basic</option>
-									<option>Intermediate</option>
-									<option>Advanced</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
 								</select>	
 							</li>
 							<li>Price: $50.00</li>
@@ -115,10 +121,10 @@
 						</ul>	
 					<td>
 					<td>
-						<img src="product4.jpg" alt="product4">
+						<img src="images/java.jpg" alt="product4">
 					<td>
 				</tr>
-				<th><a href="product5.html"><h2>Product 5</h2></a></th>
+				<th><a href="product5.html"><h2>MySQL & Databases</h2></a></th>
 				<tr>
 					<td>
 						<p>Lots of fantastic information about this bogus store. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquam neque feugiat nibh imperdiet, in rutrum nisl posuere. Nam varius sed nibh ut posuere. Sed in turpis mattis enim egestas mollis.</p>
@@ -128,27 +134,61 @@
 							<li>Item Number: 5</li>
 							<li>Version: 
 								<select>
-									<option>Basic</option>
-									<option>Intermediate</option>
-									<option>Advanced</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
 								</select>	
 							</li>
-							<li>Price: $50.00</li>
-							<li>Discounted 10%: $45.00</li>
+							<li id="starter">Price: $50.00</li>
+							<li id="standard">Price: $10.00/week or $40.00/month</li>
+							<li id="unlimited">Price: $99.00</li>
 						</ul>	
 					<td>
 					<td>
-						<img src="product5.jpg" alt="product5">
+						<img src="images/mysql.png" alt="product5">
 					<td>
 				</tr>
 			</table>
 			
 			<p class="emphasis">All products on this website are downloadable, therefore there is no shipping costs.<p>	
 		</div>
+
+
+		<select id="thechoices">
+		    <option value="box1">Box 1</option>
+		    <option value="box2">Box 2</option>
+		    <option value="box3">Box 3</option>
+		</select>
+
+		<!-- the DIVs -->
+		<div id="boxes">
+		    <div id="box1"><p>Box 1 stuff...</p></div>
+		    <div id="box2"><p>Box 2 stuff...</p></div>
+		    <div id="box3"><p>Box 3 stuff...</p></div>
+		</div>
+
+		<!-- the jQuery -->
+	<script type="text/javascript">
+
+		$("#thechoices").change(function(){
+		    $("#" + this.value).show().siblings().hide();
+		});
+
+		$("#thechoices").change();
+
+	</script>
+
+
+		
 	</div>
+
+
+
+
+
 	<footer>
 		<div>
-			<p>Store Name | </p>
+			<p>&copy; <span>A</span>&<span>S</span> E-Learn | </p>
 			<a href="disclaimer.html">Disclaimer</a></br>
 		</div>
 		<div>
@@ -158,5 +198,6 @@
 			</i></p>
 		</div>
 	</footer>
-	
+		
 </body>
+</html>
