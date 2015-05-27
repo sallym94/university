@@ -15,8 +15,16 @@ a:hover {
 	color: #23B3B4;
 }
 
+p {
+	font-size: 14px;
+}
+
 p a {
 	color: #23B3B4;
+}
+
+em {
+	font-size: 12px;
 }
 
 h1 {
@@ -49,7 +57,7 @@ h3 {
 }
 
 .wrapper {
-	width: 70%;
+	width: 900px;
 	margin: auto;
 }
 
@@ -68,7 +76,7 @@ header img {
 
 nav ul {
 	float: right;
-	margin: 10px 25px;
+	margin: 30px 25px 10px;
 }
 
 nav ul li {
@@ -105,7 +113,7 @@ nav ul li a.selected {
 
 .content .pullHalf {
 	float: left;
-	width: 60%;
+	width: 45%;
 }
 
 .content .banner {
@@ -114,8 +122,8 @@ nav ul li a.selected {
 }
 
 .content .hotspot {
-	width: 333px;
- 	/*margin: 0% 30% 0%;*/
+	width: 450px;
+ 	margin: 4% 0%;
  	float: right;
 }
 
@@ -156,6 +164,8 @@ area {
 
 .content .quotesCol blockquote {
 	padding-bottom: 10px;
+	font-size: 14px;
+
 }
 .content .quotesCol blockquote:last-child {
 	padding-bottom: 0px;
@@ -190,7 +200,9 @@ footer span {
 
 table {
 	width: 100%;
-	border-collapse: collapse
+	border-collapse: collapse;
+	font-size: 14px;
+
 }
 
 table th {
@@ -218,6 +230,8 @@ table img {
 	margin: 4px;
 	width: 100%;
 	float: left;
+	font-size: 14px;
+
 }
 
 .orderForm div label {
@@ -254,17 +268,25 @@ input[type="radio"] {
 }
 
 .orderForm table td {
-	width: 24% !important;
+	width: 12% !important;
 	border: 1px solid #23B3B4;
 	height: 30px;
 	padding: 0px 5px;
 }
 
+.orderForm table td:first-child {
+	width: 52%;
+}
+
 .orderForm table th {
-	width: 24%;
+	width: 12%;
 	border: 1px solid #23B3B4;
 	background-color: #23B3B4;
 	padding: 0px 5px;
+}
+
+.orderForm table th:first-child {
+	width: 52%;
 }
 
 .orderForm table td.blank {

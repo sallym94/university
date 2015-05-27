@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="style.css">
 <meta name="author" content="Sally Mills, Astrid Farmer">
 <meta charset="UTF-8">
-<title>STORE NAME:Order</title>
+<title>A&S E-Learn:Order</title>
 </head>
 <body>
 	<div class="wrapper">
@@ -20,7 +20,16 @@
 			</nav>	
 		</header>
 		<div class="content">
+			<img src="images/order.png" alt="banner" class="banner">
 			<h1>Order</h1>
+			<p>Order our products using the form below, simply print and fill it out! Please email, post or fax it through to us at:</p>
+
+				<p><strong>Email: </strong><a href=":email">info@aands.com.au </a><em>(Just scan it in or screen shot your details from below)</em></p> 
+				<p><strong>Postal Address: </strong>225 Learning Road, Brisbane, Australia 4000</p>
+				<p><strong>Fax: </strong><a href=":fax">07 1234 5678</a></p>
+
+			<p>Or give us a call and order over the phone on: <a href=":telephone">0412 345 678</a></p>
+			<p>There will be absolutely no shipping charges as the product is completely electronic and will be available for download once paid for.</p></br>
 			<form class="orderForm">
 			    <div>
 			        <label>Name:</label>
@@ -47,21 +56,21 @@
 
 			    <div id="credit">
 			    	<p><strong>Credit Card Details</strong></p>
-			        <label>Card Holder Name</label>
+			        <label>Card Holder Name:</label>
 			        <input type="text"/>
-			        <label>Account Number</label>
+			        <label>Account Number:</label>
 			        <input type="text"/>
-			        <label>Expiry Date</label>
+			        <label>Expiry Date:</label>
 			        <input type="text" id="expiry"/>
 			    </div>
 			    <div>
 			        <table class="orderTable">
 						<tr>
 							<th>
-								<h3>Item Number</h3>
+								<h3>Description</h3>
 							</th>
 							<th>
-								<h3>Description</h3>
+								<h3>Item Number</h3>
 							</th>
 							<th>
 								<h3>Quanitity</h3>
@@ -69,20 +78,12 @@
 							<th>
 								<h3>Price</h3>
 							</th>
+							<th>
+								<h3>Total</h3>
+							</th>
 						</tr>
 						<tr>
 							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-						</tr>
-						<tr>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-						</tr>
-						<tr>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
@@ -93,8 +94,24 @@
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
+							<td><input type="text"/></td>
 						</tr>
 						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
@@ -103,6 +120,7 @@
 						<tr>
 							<td class="blank"></td>
 							<td class="blank"></td>
+							<td class="blank"><input type="text"/></td>
 							<td><strong>Total price:</strong></td>
 							<td></td>
 						</tr>
