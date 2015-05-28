@@ -20,11 +20,11 @@
 			</nav>	
 		</header>
 		<div class="content">
-			<img src="images/order.png" alt="banner" class="banner">
+			<img src="images/order.png" alt="banner" class="banner" />
 			<h1>Order</h1>
-			<p>Order our products using the form below, simply print and fill it out! Please email, post or fax it through to us at:</p>
+			<p>Order our products using the form below, simply print and fill it out! Please email, post or fax it to us at:</p>
 
-				<p><strong>Email: </strong><a href=":email">info@aands.com.au </a><em>(Just scan it in or screen shot your details from below)</em></p> 
+				<p><strong>Email: </strong><a href=":email">info@aands.com.au </a><em>(Simply scan it in or save the print file as a PDF and send it off)</em></p> 
 				<p><strong>Postal Address: </strong>225 Learning Road, Brisbane, Australia 4000</p>
 				<p><strong>Fax: </strong><a href=":fax">07 1234 5678</a></p>
 
@@ -70,6 +70,9 @@
 								<h3>Description</h3>
 							</th>
 							<th>
+								<h3>Version</h3>
+							</th>
+							<th>
 								<h3>Item Number</h3>
 							</th>
 							<th>
@@ -83,35 +86,111 @@
 							</th>
 						</tr>
 						<tr>
+							<td><select>
+									<option>-- Select a product --</option>
+									<option>HTML & CSS</option>
+									<option>Javascript</option>
+									<option>Python</option>
+									<option>Java</option>
+									<option>MySQL & Databases</option>
+								</select>
+							</td>
+							<td><select>
+									<option>-- Select a version --</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
+								</select>
+							</td>
 							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+							
+						<tr>
+							<td><select>
+									<option>-- Select a product --</option>
+									<option>HTML & CSS</option>
+									<option>Javascript</option>
+									<option>Python</option>
+									<option>Java</option>
+									<option>MySQL & Databases</option>
+								</select>
+							</td>
+							<td><select>
+									<option>-- Select a version --</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
+								</select>
+							</td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 						</tr>
 						<tr>
-							<td><input type="text"/></td>
+							<td><select>
+									<option>-- Select a product --</option>
+									<option>HTML & CSS</option>
+									<option>Javascript</option>
+									<option>Python</option>
+									<option>Java</option>
+									<option>MySQL & Databases</option>
+								</select>
+							</td>
+							<td><select>
+									<option>-- Select a version --</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
+								</select>
+							</td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 						</tr>
 						<tr>
-							<td><input type="text"/></td>
+							<td><select>
+									<option>-- Select a product --</option>
+									<option>HTML & CSS</option>
+									<option>Javascript</option>
+									<option>Python</option>
+									<option>Java</option>
+									<option>MySQL & Databases</option>
+								</select>
+							</td>
+							<td><select>
+									<option>-- Select a version --</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
+								</select>
+							</td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 						</tr>
 						<tr>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-							<td><input type="text"/></td>
-						</tr>
-						<tr>
-							<td><input type="text"/></td>
+							<td><select>
+									<option>-- Select a product --</option>
+									<option>HTML & CSS</option>
+									<option>Javascript</option>
+									<option>Python</option>
+									<option>Java</option>
+									<option>MySQL & Databases</option>
+								</select>
+							</td>
+							<td><select>
+									<option>-- Select a version --</option>
+									<option>Starter Trial</option>
+									<option>Standard</option>
+									<option>Unlimited Access</option>
+								</select>
+							</td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
 							<td><input type="text"/></td>
@@ -122,14 +201,15 @@
 							<td class="blank"></td>
 							<td class="blank"><input type="text"/></td>
 							<td><strong>Total price:</strong></td>
-							<td></td>
+							<td><input type="text"/></td>
 						</tr>
 					</table>
 			    </div>
 			    
 			    <div class="button">
-			        <button type="submit">Order Online</button>
-			        <button type="submit">Print and Post Order</button>
+			        <input type="button" 
+					  onClick="window.print()" 
+					  value="Print To Order"/>
 			    </div>
 			</form>
 		</div>

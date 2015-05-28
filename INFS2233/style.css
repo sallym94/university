@@ -102,8 +102,9 @@ nav ul li a.selected {
 }
 
 .content {
-	margin: 0px 25px 50px;
+	margin: 0px 25px;
 	float: left;
+	padding-bottom:50px;
 }
 
 .content .fullWidth {
@@ -306,7 +307,7 @@ input[type="radio"] {
   border: none;
 }
 
-.orderForm button {
+.orderForm .button input{
 	background-color: #23B3B4;
 	border: none;
 	color: #ffffff;
@@ -316,7 +317,40 @@ input[type="radio"] {
 	cursor: pointer;
 }
 
-.orderForm button:hover {
+.orderForm .button:hover input{
 	background-color: #28C6C1;
 
+}
+
+@media print {
+    .banner {
+        display: none;
+    }
+
+    nav ul {
+    	display: none;
+    }
+
+    .orderForm table td {
+	border: 1px solid #23B3B4;
+	}
+
+
+	.orderForm table th {
+		border: 1px solid #23B3B4;
+	}
+
+	.orderForm table td.blank {
+		border-bottom: none;
+	  	border-left: none;
+	  	border-right: none;
+	}
+
+	.orderForm table tr:last-child {
+		border-top: 2px solid #23B3B4;
+	}
+
+	.orderForm table input {
+	  border: none;
+	}
 }
