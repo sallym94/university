@@ -5,7 +5,8 @@
 	<meta name="author" content="Sally Mills, Astrid Farmer">
 	<meta charset="UTF-8">
 	<title>STORE NAME: Products</title>
-	<script src="scripts/jquery-1.11.2.min.js"></script>
+	<script src="scripts/jquery-1.11.3.min.js"></script>
+	<script src="scripts/script.js"></script>
 	
 
 </head>
@@ -25,6 +26,7 @@
 		<div class="content">
 			<img src="images/products.png" alt="banner" class="banner" />
 			<h1>Products</h1>
+			<p>Check out our available tutorials below. Use the drop down to view our different versions and their corresponding prices. </br> If you complete one project in a course recieve <strong>$5 off</strong> your next purchase! To make an order head to our <a href="order.html">order page</a>.</p>
 			<table>
 				<tr>
 					<th><a href="HTML_CSS.html"><h2>HTML & CSS</h2></a></th>
@@ -39,15 +41,15 @@
 						<ul>
 							<li><strong>Item Number:</strong> 1</li>
 							<li><strong>Version:</strong> 
-								<select>
-									<option>Starter Trial: FREE</option>
-									<option>Standard: $10.00/week</br> or $40.00/month</option>
-									<option>Unlimited Access: $99.00</option>
+								<select id="htmlSelect">
+									<option value="starterHTML">Starter Trial</option>
+									<option value="standardHTML">Standard</option>
+									<option value="unlimitedHTML">Unlimited Access</option>
 								</select>	
 							</li>
-							<li id="starter"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
-							<li id="standard"><strong>Price:</strong> $10.00/week or $40.00/month</li>
-							<li id="unlimited"><strong>Price:</strong> $99.00</li>
+							<li class="htmlOption starterHTML"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
+							<li class="htmlOption standardHTML" style="display: none;"><strong>Price:</strong> $10.00/week or $40.00/month</li>
+							<li class="htmlOption unlimitedHTML" style="display: none;"><strong>Price:</strong> $99.00</li>
 						</ul>	
 					<td>
 					<td>
@@ -61,17 +63,17 @@
 					<td>
 					<td>
 						<ul>
-							<li><strong>Item Number:</strong> 2</li>
+							<li><strong>Item Number:</strong> 1</li>
 							<li><strong>Version:</strong> 
-								<select>
-									<option>Starter Trial: FREE</option>
-									<option>Standard: $10.00/week or $40.00/month</option>
-									<option>Unlimited Access: $99.00</option>
+								<select id="JsSelect">
+									<option value="starterJs">Starter Trial</option>
+									<option value="standardJs">Standard</option>
+									<option value="unlimitedJs">Unlimited Access</option>
 								</select>	
 							</li>
-							<li id="starter"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
-							<li id="standard"><strong>Price:</strong> $10.00/week or $40.00/month</li>
-							<li id="unlimited"><strong>Price:</strong> $99.00</li>
+							<li class="JsOption starterJs"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
+							<li class="JsOption standardJs" style="display: none;"><strong>Price:</strong> $10.00/week or $40.00/month</li>
+							<li class="JsOption unlimitedJs" style="display: none;"><strong>Price:</strong> $99.00</li>
 						</ul>	
 					<td>
 					<td>
@@ -85,17 +87,17 @@
 					<td>
 					<td>
 						<ul>
-							<li><strong>Item Number:</strong> 3</li>
+							<li><strong>Item Number:</strong> 1</li>
 							<li><strong>Version:</strong> 
-								<select>
-									<option>Starter Trial: FREE</option>
-									<option>Standard: $10.00/week or $40.00/month</option>
-									<option>Unlimited Access: $99.00</option>
+								<select id="PytSelect">
+									<option value="starterPyt">Starter Trial</option>
+									<option value="standardPyt">Standard</option>
+									<option value="unlimitedPyt">Unlimited Access</option>
 								</select>	
 							</li>
-							<li id="starter"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
-							<li id="standard"><strong>Price:</strong> $10.00/week or $40.00/month</li>
-							<li id="unlimited"><strong>Price:</strong> $99.00</li>
+							<li class="PytOption starterPyt"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
+							<li class="PytOption standardPyt" style="display: none;"><strong>Price:</strong> $10.00/week or $40.00/month</li>
+							<li class="PytOption unlimitedPyt" style="display: none;"><strong>Price:</strong> $99.00</li>
 						</ul>	
 					<td>
 					<td>
@@ -109,17 +111,17 @@
 					<td>
 					<td>
 						<ul>
-							<li><strong>Item Number:</strong> 4</li>
+							<li><strong>Item Number:</strong> 1</li>
 							<li><strong>Version:</strong> 
-								<select>
-									<option>Starter Trial: FREE</option>
-									<option>Standard: $10.00/week or $40.00/month</option>
-									<option>Unlimited Access: $99.00</option>
+								<select id="JavaSelect">
+									<option value="starterJava">Starter Trial</option>
+									<option value="standardJava">Standard</option>
+									<option value="unlimitedJava">Unlimited Access</option>
 								</select>	
 							</li>
-							<li id="starter"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
-							<li id="standard"><strong>Price:</strong> $10.00/week or $40.00/month</li>
-							<li id="unlimited"><strong>Price:</strong> $99.00</li>
+							<li class="JavaOption starterJava"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
+							<li class="JavaOption standardJava" style="display: none;"><strong>Price:</strong> $10.00/week or $40.00/month</li>
+							<li class="JavaOption unlimitedJava" style="display: none;"><strong>Price:</strong> $99.00</li>
 						</ul>	
 					<td>
 					<td>
@@ -133,17 +135,17 @@
 					<td>
 					<td>
 						<ul>
-							<li><strong>Item Number:</strong> 5</li>
+							<li><strong>Item Number:</strong> 1</li>
 							<li><strong>Version:</strong> 
-								<select>
-									<option>Starter Trial: FREE</option>
-									<option>Standard: $10.00/week or $40.00/month</option>
-									<option>Unlimited Access: $99.00</option>
+								<select id="SQLSelect">
+									<option value="starterSQL">Starter Trial</option>
+									<option value="standardSQL">Standard</option>
+									<option value="unlimitedSQL">Unlimited Access</option>
 								</select>	
 							</li>
-							<li id="starter"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
-							<li id="standard"><strong>Price:</strong> $10.00/week or $40.00/month</li>
-							<li id="unlimited"><strong>Price:</strong> $99.00</li>
+							<li class="SQLOption starterSQL"><strong>Price:</strong> FREE! <em>(includes 3 free tutorials and a project)</em></li>
+							<li class="SQLOption standardSQL" style="display: none;"><strong>Price:</strong> $10.00/week or $40.00/month</li>
+							<li class="SQLOption unlimitedSQL" style="display: none;"><strong>Price:</strong> $99.00</li>
 						</ul>	
 					<td>
 					<td>
@@ -154,34 +156,6 @@
 			
 			<p class="emphasis">All products on this website are downloadable, therefore there is no shipping costs.<p>	
 		</div>
-
-
-		<select id="thechoices">
-		    <option value="box1">Box 1</option>
-		    <option value="box2">Box 2</option>
-		    <option value="box3">Box 3</option>
-		</select>
-
-		<!-- the DIVs -->
-		<div id="boxes">
-		    <div id="box1"><p>Box 1 stuff...</p></div>
-		    <div id="box2"><p>Box 2 stuff...</p></div>
-		    <div id="box3"><p>Box 3 stuff...</p></div>
-		</div>
-
-		<!-- the jQuery -->
-	<script type="text/javascript">
-
-		$("#thechoices").change(function(){
-		    $("#" + this.value).show().siblings().hide();
-		});
-
-		$("#thechoices").change();
-
-	</script>
-
-
-		
 	</div>
 
 
@@ -190,7 +164,8 @@
 
 	<footer>
 		<div>
-			<p>&copy; <span>A</span>&<span>S</span> E-Learn | </p>
+			<a href="faq.html">FAQ</a>
+			<p> | &copy; <span>A</span>&<span>S</span> E-Learn | </p>
 			<a href="disclaimer.html">Disclaimer</a></br>
 		</div>
 		<div>
